@@ -9,7 +9,7 @@ set -e
 cd "$(dirname "$0")"
 
 REMOTE_HOST="cmertins@192.168.165.7"
-REMOTE_DIR="/opt/telefonbuch"
+REMOTE_DIR="/Users/cmertins/telefonbuch"
 REMOTE_JAR="$REMOTE_DIR/app.jar"
 REMOTE_LOG="$REMOTE_DIR/app.log"
 JAVA_BIN="/opt/homebrew/opt/openjdk/bin/java"
@@ -36,7 +36,7 @@ echo \"started pid \$!\"
 echo "=== Step 4: warten, bis die App antwortet ==="
 for i in $(seq 1 45); do
   sleep 1
-  if ssh "$REMOTE_HOST" "echo > /dev/tcp/127.0.0.1/8080" 2>/dev/null; then
+  if ssh "$REMOTE_HOST" "curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:8080/q/health | grep -q 200"; then
     echo "Server ready after ${i}s"
     break
   fi
@@ -48,7 +48,7 @@ ssh "$REMOTE_HOST" "tail -5 $REMOTE_LOG"
 node -e "
 const base = 'http://192.168.165.7:8080';
 (async () => {
-  for (const p of ['/', '/index.html', '/assets/index.html', '/api/contacts', '/q/health']) {
+  for (const p of ['/', '/index.html', '/assets/index-Ca2a1Mg1.js', '/api/contacts', '/q/health']) {
     try {
       const r = await fetch(base + p);
       const body = await r.text();
