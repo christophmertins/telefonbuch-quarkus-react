@@ -12,12 +12,10 @@ function initials(name: string): string {
 }
 
 const PALETTES: [string, string][] = [
-  ['#6366f1', '#22d3ee'],
-  ['#8b5cf6', '#f472b6'],
-  ['#0ea5e9', '#34d399'],
-  ['#f59e0b', '#f43f5e'],
-  ['#14b8a6', '#a3e635'],
-  ['#ec4899', '#8b5cf6'],
+  ['#475569', '#64748b'],
+  ['#57534e', '#78716c'],
+  ['#525252', '#737373'],
+  ['#3f4a5a', '#556072'],
 ]
 
 function paletteFor(name: string): [string, string] {
@@ -187,13 +185,13 @@ export default function App() {
           </div>
           <div>
             <h1>Telefonbuch</h1>
-            <p>Internes Verzeichnis · Active Directory</p>
+            <p>Kontaktverzeichnis</p>
           </div>
         </div>
         {counts && (
           <div className="mode-badge" title="Aktive Datenquelle">
             <span className={`mode-dot ${counts.mode === 'ldap' ? 'ok' : 'demo'}`} />
-            {counts.mode === 'ldap' ? 'Active Directory' : 'Demo-Daten'}
+            {counts.mode === 'ldap' ? 'Verzeichnis' : 'Demo'}
           </div>
         )}
       </header>
@@ -358,7 +356,7 @@ export default function App() {
       )}
 
       <footer className="footer">
-        <span>Telefonbuch · Quarkus + React</span>
+        <span>Telefonbuch</span>
         <span>{stats ? `${stats.total} Kontakte` : ''}</span>
       </footer>
     </div>

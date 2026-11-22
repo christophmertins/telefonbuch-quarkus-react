@@ -16,7 +16,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 /**
- * Reads contacts from Active Directory (LDAP). No extra dependency: uses the JDK's built-in LDAP client.
+ * Reads contacts from an LDAP directory. No extra dependency: uses the JDK's built-in LDAP client.
  */
 @ApplicationScoped
 public class LdapContactSource {

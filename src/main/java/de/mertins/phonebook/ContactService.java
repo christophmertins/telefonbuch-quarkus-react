@@ -28,7 +28,7 @@ public class ContactService {
             try {
                 loaded = ldap.search();
                 mode = "ldap";
-                LOG.infof("Loaded %d contacts from Active Directory", loaded.size());
+                LOG.infof("Loaded %d contacts from directory", loaded.size());
             } catch (Exception e) {
                 LOG.warnf("LDAP search failed, falling back to demo data: %s", e.getMessage());
                 loaded = DemoContactSource.contacts();
