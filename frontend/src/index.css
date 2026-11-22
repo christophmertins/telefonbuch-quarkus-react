@@ -105,26 +105,6 @@ html, body {
   font-family: inherit;
 }
 
-.stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-bottom: 22px;
-}
-
-.stat {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 14px 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.stat-value { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em; }
-.stat-label { color: var(--muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; }
-
 .error-banner {
   background: #fef2f2;
   border: 1px solid #fecaca;
@@ -373,9 +353,6 @@ a.row-link:hover { border-color: var(--accent); }
   .cell-mail, .cell-mobile { display: none; }
   .table { min-width: 0; }
   .app { padding: 20px 14px 36px; }
-  .stats { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-  .stat { padding: 10px 12px; }
-  .stat-value { font-size: 1.25rem; }
   .table-wrap { font-size: 0.82rem; }
   .cell-contact { min-width: 0; }
   .table td { padding: 8px 10px; }

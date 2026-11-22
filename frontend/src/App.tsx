@@ -150,11 +150,6 @@ export default function App() {
     return () => { cancelled = true }
   }, [selected])
 
-  const counts = useMemo(() => {
-    if (!stats) return null
-    return { total: stats.total, mail: stats.withMail, phone: stats.withPhone, mode: stats.mode }
-  }, [stats])
-
   const groups = useMemo(() => {
     const map = new Map<string, Contact[]>()
     for (const c of contacts) {
@@ -188,10 +183,10 @@ export default function App() {
             <p>Kontaktverzeichnis</p>
           </div>
         </div>
-        {counts && (
+        {stats && (
           <div className="mode-badge" title="Aktive Datenquelle">
-            <span className={`mode-dot ${counts.mode === 'ldap' ? 'ok' : 'demo'}`} />
-            {counts.mode === 'ldap' ? 'Verzeichnis' : 'Demo'}
+            <span className={`mode-dot ${stats.mode === 'ldap' ? 'ok' : 'demo'}`} />
+            {stats.mode === 'ldap' ? 'Verzeichnis' : 'Demo'}
           </div>
         )}
       </header>
@@ -213,23 +208,6 @@ export default function App() {
           <kbd>/</kbd>
         </div>
       </div>
-
-      {counts && (
-        <div className="stats">
-          <div className="stat">
-            <span className="stat-value">{counts.total}</span>
-            <span className="stat-label">Kontakte</span>
-          </div>
-          <div className="stat">
-            <span className="stat-value">{counts.mail}</span>
-            <span className="stat-label">mit E-Mail</span>
-          </div>
-          <div className="stat">
-            <span className="stat-value">{counts.phone}</span>
-            <span className="stat-label">mit Telefon</span>
-          </div>
-        </div>
-      )}
 
       {error && <div className="error-banner">{error}</div>}
 
